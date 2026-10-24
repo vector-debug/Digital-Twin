@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Meditate</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#F2F3F5}
+a{color:#1D2939}a:hover{color:#0E1726}
+.navlink{color:#C9D1DE;text-decoration:none}
+.navlink:hover{color:#FFFFFF;background:rgba(255,255,255,0.06)}
+.tlink{color:#1D2939;text-decoration:none}
+.tlink:hover{text-decoration:underline}
+button{font-family:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid #3E63DD;outline-offset:2px}
+.sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite alternate}
+.orb{transform-box:fill-box;transform-origin:50% 50%}
+.orb.on{animation:breathe 10s ease-in-out infinite}
+.drift{animation:drift 40s linear infinite alternate}
+@keyframes sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@keyframes breathe{0%{transform:scale(0.78)}40%{transform:scale(1.12)}100%{transform:scale(0.78)}}
+@keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+@media (prefers-reduced-motion: reduce){.sway,.orb.on,.drift{animation:none}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F2F3F5; color: #101828; font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.5;">
+<header style="background: #0E1726; color: #FFFFFF;">
+<div style="max-width: 1320px; margin: 0 auto; padding: 12px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px;">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none; min-height: 44px;">
+<span style="width: 36px; height: 36px; border-radius: 10px; background: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1726" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.2;"><span style="font-weight: 600">Apollo Hospitals<br><span style="font-size: 12px; color: rgb(174, 184, 200)">Patient Portal</span></span></span>
+</a>
+<nav aria-label="Portal sections" style="flex: 1 1 560px; min-width: 0; overflow-x: auto;">
+<div style="display: flex; gap: 4px; width: max-content;">
+<a class="navlink" href="Main.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Overview</a>
+<a class="navlink" href="Vitals.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Vitals</a>
+<a class="navlink" href="Activity.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Activity</a>
+<a class="navlink" href="Medications.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Medications</a>
+<a class="navlink" href="Care.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Risks &amp; care plan</a>
+<a href="Meditate.dc.html" aria-current="page" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; color: #FFFFFF; background: rgba(255,255,255,0.12); text-decoration: none;">Meditate</a>
+<a class="navlink" href="Profile.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Profile</a>
+</div>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px;">
+<button type="button" aria-label="Notifications, 2 unread" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg><span style="position: absolute; top: 9px; right: 10px; width: 8px; height: 8px; border-radius: 999px; background: #F97066;"></span></button>
+<a href="Profile.dc.html" aria-label="Your profile, {{pt.name}}" style="width: 44px; height: 44px; border-radius: 999px; background: #E9DFCF; color: #3A2E1F; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; text-decoration: none;">{{pt.initials}}</a>
+</div>
+</div>
+</header>
+<main style="max-width: 1320px; margin: 0 auto; padding: 32px clamp(16px, 4vw, 40px) 48px; display: flex; flex-direction: column; gap: 24px;">
+
+<section style="display: flex; flex-direction: column; gap: 6px;">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #5D6679;">Meditate</span>
+<h1 style="margin: 0; font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; font-family: Merriweather, serif;">Take a few quiet minutes</h1>
+<p style="margin: 0; max-width: 640px; font-size: 15px; color: #475467;">Slow, steady breathing can help settle stress, which affects blood sugar and heart rate. A bell rings when you begin and when time is up.</p>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 24px;">
+<article aria-label="Meditation scene" style="flex: 2 1 560px; min-width: 0; position: relative; border-radius: 24px; overflow: hidden; background: #EAF4F1; border: 1px solid #E4E7EC; min-height: 420px;">
+<svg viewBox="0 0 800 460" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" style="position: absolute; inset: 0; display: block;" aria-hidden="true">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE8F0"></stop><stop offset="0.6" stop-color="#F6EFD9"></stop><stop offset="1" stop-color="#FBE3D3"></stop></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></radialGradient>
+</defs>
+<image href="meditation-scene.jpg" width="800" height="460" preserveAspectRatio="xMidYMid slice"></image>
+<g transform="translate(400 120)">
+<circle r="120" fill="url(#glow)" opacity="0.8"></circle>
+<g class="{{orbClass}}"><circle r="62" fill="#FFFFFF" fill-opacity="0.55" stroke="#FFFFFF" stroke-width="2"></circle><circle r="40" fill="#CFE8DA" fill-opacity="0.85"></circle></g>
+</g>
+</svg>
+<div style="position: absolute; left: 0; right: 0; bottom: 20px; text-align: center; pointer-events: none;">
+<span id="mPhase" style="display: inline-block; font-size: 15px; font-weight: 600; color: #1D4A36; background: rgba(255,255,255,0.8); padding: 6px 16px; border-radius: 999px;">{{phase}}</span>
+</div>
+</article>
+
+<article aria-labelledby="timer-h" style="flex: 1 1 340px; min-width: 0; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 20px;">
+<h2 id="timer-h" style="margin: 0; font-size: 18px; font-weight: 600;">Session timer</h2>
+<div role="timer" aria-live="off" style="display: flex; align-items: baseline; justify-content: center; padding: 8px 0;"><span id="mTime" style="font-size: 76px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums;">{{timeText}}</span></div>
+<div role="group" aria-label="Session length" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+<sc-for list="{{lengths}}" as="l" hint-placeholder-count="4">
+<button type="button" onClick="{{l.pick}}" aria-pressed="{{l.pressed}}" style="{{l.style}}">{{l.label}}</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{toggle}}" style="min-height: 52px; border-radius: 14px; border: none; background: #0E1726; color: #FFFFFF; font-size: 16px; font-weight: 600;">{{toggleText}}</button>
+<p style="margin: 0; font-size: 13px; color: #475467;">Breathe in as the circle grows, and out as it settles. Sit comfortably and let your shoulders drop. If you feel dizzy or unwell, stop and check your sugar.</p>
+</article>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 24px;">
+<article aria-labelledby="stats-h" style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+<h2 id="stats-h" style="margin: 0; font-size: 18px; font-weight: 600;">Your practice</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+<div style="border: 1px solid #EEF0F3; border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums;">{{stats.sessions}}</span><span style="font-size: 12px; color: #5D6679;">sessions</span></div>
+<div style="border: 1px solid #EEF0F3; border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums;">{{stats.minutes}}</span><span style="font-size: 12px; color: #5D6679;">minutes in total</span></div>
+<div style="border: 1px solid #EEF0F3; border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums;">{{stats.streak}}</span><span style="font-size: 12px; color: #5D6679;">day streak</span></div>
+</div>
+<p style="margin: 0; font-size: 13px; color: #475467;">Sessions are saved on this device for {{pt.first}} only.</p>
+</article>
+
+<article aria-labelledby="hist-h" style="flex: 2 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+<h2 id="hist-h" style="margin: 0; font-size: 18px; font-weight: 600;">Previous sessions</h2>
+<sc-if value="{{hasHistory}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{clear}}" style="min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid #D0D5DD; background: #FFFFFF; color: #1D2939; font-size: 13px; font-weight: 500;">Clear history</button></sc-if>
+</div>
+<sc-if value="{{noHistory}}" hint-placeholder-val="{{true}}"><p style="margin: 0; font-size: 14px; color: #5D6679;">No sessions yet. Your first one will appear here.</p></sc-if>
+<div style="display: flex; flex-direction: column;">
+<sc-for list="{{history}}" as="h" hint-placeholder-count="3">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; padding: 12px 0; border-bottom: 1px solid #F2F4F7;">
+<span style="flex: 1 1 200px; font-size: 15px; font-weight: 500;">{{h.when}}</span>
+<span style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums;">{{h.len}}</span>
+<span style="{{h.badge}}">{{h.status}}</span>
+</div>
+</sc-for>
+</div>
+</article>
+</section>
+
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 8px; border-top: 1px solid #E4E7EC; font-size: 13px; color: #5D6679;">
+<span>Meditation is a wellbeing aid and doesn’t replace your treatment plan.</span>
+<span>Emergency: 112 · Hospital helpline: [Helpline number]</span>
+</footer>
+</main>
+</div>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap"></helmet></x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, s = this.state || {}, P = window.PT;
+    var key = 'meditations:' + P.p.patient_id;
+    var mins = s.mins || 10, running = !!s.running;
+    var M = window.__med = window.__med || {};
+    function load() { try { return JSON.parse(localStorage.getItem(key)) || []; } catch (e) { return []; } }
+    function save(a) { try { localStorage.setItem(key, JSON.stringify(a)); } catch (e) {} }
+    var hist = s.hist || load();
+
+    function bell() {
+      try {
+        var C = M.ctx = M.ctx || new (window.AudioContext || window.webkitAudioContext)();
+        if (C.state === 'suspended') C.resume();
+        var t = C.currentTime, g = C.createGain();
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 5);
+        g.connect(C.destination);
+        [[528, 1], [1056, 0.4], [1584, 0.2], [1331, 0.15]].forEach(function (p) {
+          var o = C.createOscillator(), pg = C.createGain();
+          o.type = 'sine'; o.frequency.value = p[0]; pg.gain.value = p[1];
+          o.connect(pg); pg.connect(g); o.start(t); o.stop(t + 5);
+        });
+      } catch (e) {}
+    }
+    function fmt(sec) { sec = Math.max(0, Math.ceil(sec)); var m = Math.floor(sec / 60), r = sec % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+    function phaseAt(el) { var c = el % 10; return c < 4 ? 'Breathe in' : 'Breathe out'; }
+    function finish(done) {
+      clearInterval(M.iv); M.iv = null;
+      var elapsed = Math.min((Date.now() - M.start) / 1000, M.total);
+      bell();
+      var a = load();
+      if (elapsed >= 10) { a.unshift({ at: new Date().toISOString(), planned: M.total, secs: Math.round(elapsed), done: done }); a = a.slice(0, 50); save(a); }
+      self.setState({ running: false, hist: a });
+    }
+    function tick() {
+      var el = (Date.now() - M.start) / 1000, left = M.total - el;
+      if (left <= 0) return finish(true);
+      var t = document.getElementById('mTime'), p = document.getElementById('mPhase');
+      if (t) t.textContent = fmt(left);
+      if (p) p.textContent = phaseAt(el);
+    }
+    var toggle = function () {
+      if (running) return finish(false);
+      M.total = mins * 60; M.start = Date.now();
+      bell();
+      M.iv = setInterval(tick, 250);
+      self.setState({ running: true });
+    };
+
+    var lengths = [5, 10, 15, 20].map(function (n) {
+      var on = n === mins;
+      return {
+        label: n + ' min', pressed: on ? 'true' : 'false',
+        style: 'min-height: 44px; border-radius: 10px; font-size: 14px; font-weight: 500; ' + (on ? 'background: #0E1726; color: #FFFFFF; border: 1px solid #0E1726;' : 'background: #FFFFFF; color: #1D2939; border: 1px solid #D0D5DD;') + (running ? ' opacity: 0.5; cursor: not-allowed;' : ''),
+        pick: function () { if (!running) self.setState({ mins: n }); }
+      };
+    });
+
+    var days = {};
+    hist.forEach(function (h) { days[h.at.slice(0, 10)] = 1; });
+    var streak = 0, d = new Date();
+    if (!days[d.toISOString().slice(0, 10)]) d.setDate(d.getDate() - 1);
+    while (days[d.toISOString().slice(0, 10)]) { streak++; d.setDate(d.getDate() - 1); }
+    var history = hist.slice(0, 10).map(function (h) {
+      var dt = new Date(h.at);
+      return {
+        when: dt.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · ' + dt.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' }).toUpperCase(),
+        len: fmt(h.secs) + ' of ' + Math.round(h.planned / 60) + ' min',
+        status: h.done ? 'Completed' : 'Ended early',
+        badge: 'font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; ' + (h.done ? 'color: #1F6E4A; background: #ECF8F1;' : 'color: #92560A; background: #FDF3E1;')
+      };
+    });
+
+
+    return {
+      lengths: lengths, toggle: toggle, toggleText: running ? 'End session' : 'Begin meditation',
+      orbClass: 'orb' + (running ? ' on' : ''), phase: running ? 'Breathe in' : 'Ready when you are',
+      timeText: fmt(running ? Math.max(0, M.total - (Date.now() - M.start) / 1000) : mins * 60),
+      history: history, hasHistory: hist.length > 0, noHistory: hist.length === 0,
+      clear: function () { save([]); self.setState({ hist: [] }); },
+      stats: { sessions: hist.length, minutes: Math.round(hist.reduce(function (a, h) { return a + h.secs; }, 0) / 60), streak: streak }
+    };
+  }
+}
+</script>
+</body>
+</html>

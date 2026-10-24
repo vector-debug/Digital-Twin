@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vitals and trends</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#F2F3F5}
+a{color:#1D2939}a:hover{color:#0E1726}
+.navlink{color:#C9D1DE;text-decoration:none}
+.navlink:hover{color:#FFFFFF;background:rgba(255,255,255,0.06)}
+button{font-family:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid #3E63DD;outline-offset:2px}
+td,th{padding:14px 16px;text-align:left;border-bottom:1px solid #F2F4F7;white-space:nowrap}
+th{font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#5D6679;background:#F8F9FB}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F2F3F5; color: #101828; font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.5;">
+
+<header style="background: #0E1726; color: #FFFFFF;">
+<div style="max-width: 1320px; margin: 0 auto; padding: 12px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px;">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none; min-height: 44px;">
+<span style="width: 36px; height: 36px; border-radius: 10px; background: #FFFFFF; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1726" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.2;"><span style="font-weight: 600">Apollo Hospitals<br><span style="font-size: 12px; color: rgb(174, 184, 200)">Patient Portal</span></span></span>
+</a>
+<nav aria-label="Portal sections" style="flex: 1 1 560px; min-width: 0; overflow-x: auto;">
+<div style="display: flex; gap: 4px; width: max-content;">
+<a class="navlink" href="Main.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Overview</a>
+<a href="Vitals.dc.html" aria-current="page" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; color: #FFFFFF; background: rgba(255,255,255,0.12); text-decoration: none;">Vitals</a>
+<a class="navlink" href="Activity.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Activity</a>
+<a class="navlink" href="Medications.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Medications</a>
+<a class="navlink" href="Care.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Risks &amp; care plan</a>
+<a class="navlink" href="Meditate.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Meditate</a>
+<a class="navlink" href="Profile.dc.html" style="padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 500;">Profile</a>
+</div>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px;">
+<button type="button" aria-label="Notifications, 2 unread" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg><span style="position: absolute; top: 9px; right: 10px; width: 8px; height: 8px; border-radius: 999px; background: #F97066;"></span></button>
+<a href="Profile.dc.html" aria-label="Your profile, {{pt.name}}" style="width: 44px; height: 44px; border-radius: 999px; background: #E9DFCF; color: #3A2E1F; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; text-decoration: none;">{{pt.initials}}</a>
+</div>
+</div>
+</header>
+
+<main style="max-width: 1320px; margin: 0 auto; padding: 32px clamp(16px, 4vw, 40px) 48px; display: flex; flex-direction: column; gap: 24px;">
+
+<section style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px;">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1 1 480px;">
+<span style="font-family: &quot;Geist&quot;; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #5D6679">Vitals &amp; trends</span>
+<h1 style="margin: 0; font-size: clamp(28px, 4vw, 38px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; font-family: Merriweather, serif">Your heart, variability and sugar over time</h1>
+<p style="margin: 0; color: #475467; font-size: 14px; text-wrap: pretty;">From your wearable and continuous glucose monitor, every 5 minutes. Shaded bands show normal ranges.</p>
+</div>
+<div role="group" aria-label="Time range" style="display: flex; gap: 4px; padding: 4px; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 14px;">
+<sc-for list="{{ranges}}" as="r" hint-placeholder-count="3">
+<button type="button" onClick="{{r.pick}}" aria-pressed="{{r.pressed}}" style="{{r.style}}">{{r.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<article aria-labelledby="hr-h" style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px 32px;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="width: 44px; height: 44px; border-radius: 12px; background: #FDEDED; display: flex; align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg></span>
+<div style="display: flex; flex-direction: column;"><h2 id="hr-h" style="margin: 0; font-size: 20px; font-weight: 700; font-family: Merriweather, serif">Heart rate</h2><span style="font-size: 13px; color: #5D6679;">Every 5 minutes · wearable</span></div>
+</div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">Average</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{hr.avg}} <span style="font-size: 13px; font-weight: 400; color: #5D6679;">bpm</span></span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">Range</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{hr.range}}</span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">vs previous {{label}}</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #1F6E4A;">{{hr.change}}</span></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px;">
+<div style="position: relative; height: 240px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5D6679;">
+<span style="position: absolute; right: 0; top: 0; transform: translateY(-50%);">120</span>
+<span style="position: absolute; right: 0; top: 25%; transform: translateY(-50%);">100</span>
+<span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">80</span>
+<span style="position: absolute; right: 0; top: 75%; transform: translateY(-50%);">60</span>
+<span style="position: absolute; right: 0; top: 100%; transform: translateY(-50%);">40</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+<div style="position: relative; height: 240px;">
+<svg width="100%" height="240" viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="{{hr.aria}}" style="display: block;">
+<rect x="0" y="60" width="1000" height="120" fill="#E5484D" fill-opacity="0.07"></rect>
+<path d="M0,0.5H1000M0,60H1000M0,120H1000M0,180H1000M0,239.5H1000" fill="none" stroke="#EAECF0" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+<path d="{{hr.area}}" fill="#E5484D" fill-opacity="0.06" stroke="none"></path>
+<path d="{{hr.line}}" fill="none" stroke="#E5484D" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg>
+<span style="position: absolute; right: 8px; top: 50%; margin-top: 6px; font-size: 11px; font-weight: 500; color: #9F2A2E;">Normal 60–100</span>
+<sc-if value="{{hr.hov.on}}" hint-placeholder-val="{{false}}">
+<span style="{{hr.hov.line}}"></span>
+<span style="{{hr.hov.dot1}}"></span>
+<span style="{{hr.hov.tip}}"><span style="font-size: 11px; color: #AEB8C8;">{{hr.hov.date}}</span><span style="font-size: 14px; font-weight: 600;">{{hr.hov.text}}</span></span>
+</sc-if>
+<div onMouseMove="{{hr.move}}" onMouseLeave="{{leave}}" style="position: absolute; inset: 0;"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5D6679;"><sc-for list="{{xLabels}}" as="x" hint-placeholder-count="5"><span>{{x}}</span></sc-for></div>
+</div>
+</div>
+</article>
+
+<article aria-labelledby="bp-h" style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px 32px;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="width: 44px; height: 44px; border-radius: 12px; background: #F3ECFA; display: flex; align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8E4EC6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg></span>
+<div style="display: flex; flex-direction: column;"><h2 id="bp-h" style="margin: 0; font-size: 20px; font-weight: 700; font-family: Merriweather, serif">Heart rate variability</h2><span style="font-size: 13px; color: #5D6679;">rMSSD · every 5 minutes</span></div>
+</div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">Average</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{bp.avg}} <span style="font-size: 13px; font-weight: 400; color: #5D6679;">ms</span></span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">Lowest</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{bp.inTarget}}</span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">vs previous {{label}}</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #1F6E4A;">{{bp.change}}</span></div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: #344054;">
+<span style="display: flex; align-items: center; gap: 8px;"><span style="width: 20px; height: 3px; border-radius: 2px; background: #8E4EC6;"></span>HRV (rMSSD)</span>
+
+<span style="display: flex; align-items: center; gap: 8px;"><svg width="20" height="4" aria-hidden="true"><path d="M1,2H19" stroke="#98A2B3" stroke-width="1.5" stroke-dasharray="2 3"></path></svg>Higher usually means better recovery</span>
+</div>
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px;">
+<div style="position: relative; height: 240px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5D6679;">
+<span style="position: absolute; right: 0; top: 0; transform: translateY(-50%);">70</span>
+<span style="position: absolute; right: 0; top: 20%; transform: translateY(-50%);">60</span>
+<span style="position: absolute; right: 0; top: 40%; transform: translateY(-50%);">50</span>
+<span style="position: absolute; right: 0; top: 60%; transform: translateY(-50%);">40</span>
+<span style="position: absolute; right: 0; top: 80%; transform: translateY(-50%);">30</span>
+<span style="position: absolute; right: 0; top: 100%; transform: translateY(-50%);">20</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+<div style="position: relative; height: 240px;">
+<svg width="100%" height="240" viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="{{bp.aria}}" style="display: block;">
+<path d="M0,0.5H1000M0,48H1000M0,96H1000M0,144H1000M0,192H1000M0,239.5H1000" fill="none" stroke="#EAECF0" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+<path d="{{bp.dia}}" fill="none" stroke="#B48ADE" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+<path d="{{bp.sys}}" fill="none" stroke="#8E4EC6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg>
+<sc-if value="{{bp.hov.on}}" hint-placeholder-val="{{false}}">
+<span style="{{bp.hov.line}}"></span>
+<span style="{{bp.hov.dot1}}"></span>
+<span style="{{bp.hov.dot2}}"></span>
+<span style="{{bp.hov.tip}}"><span style="font-size: 11px; color: #AEB8C8;">{{bp.hov.date}}</span><span style="font-size: 14px; font-weight: 600;">{{bp.hov.text}}</span></span>
+</sc-if>
+<div onMouseMove="{{bp.move}}" onMouseLeave="{{leave}}" style="position: absolute; inset: 0;"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5D6679;"><sc-for list="{{xLabels}}" as="x" hint-placeholder-count="5"><span>{{x}}</span></sc-for></div>
+</div>
+</div>
+</article>
+
+<article aria-labelledby="gl-h" style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px 32px;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="width: 44px; height: 44px; border-radius: 12px; background: #FBF1DF; display: flex; align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C7820E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg></span>
+<div style="display: flex; flex-direction: column;"><h2 id="gl-h" style="margin: 0; font-size: 20px; font-weight: 700; font-family: Merriweather, serif">Blood glucose</h2><span style="font-size: 13px; color: #5D6679;">Continuous glucose monitor · every 5 minutes</span></div>
+</div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">Average</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{gl.avg}} <span style="font-size: 13px; font-weight: 400; color: #5D6679;">mg/dL</span></span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">Peak</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{gl.pm}} <span style="font-size: 13px; font-weight: 400; color: #5D6679;">mg/dL</span></span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">HbA1c · lab</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{pt.hba1c}}%</span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-size: 12px; color: #5D6679;">vs previous {{label}}</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #1F6E4A;">{{gl.change}}</span></div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: #344054;">
+<span style="display: flex; align-items: center; gap: 8px;"><span style="width: 20px; height: 3px; border-radius: 2px; background: #C7820E;"></span>Glucose (CGM)</span>
+
+<span style="display: flex; align-items: center; gap: 8px;"><span style="width: 20px; height: 10px; border-radius: 3px; background: #FBF1DF; border: 1px solid #F1D3A8;"></span>Target 70–180</span>
+<span style="display: flex; align-items: center; gap: 8px;"><svg width="20" height="4" aria-hidden="true"><path d="M1,2H19" stroke="#98A2B3" stroke-width="1.5" stroke-dasharray="2 3"></path></svg>Upper limit 180</span>
+</div>
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px;">
+<div style="position: relative; height: 240px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5D6679;">
+<span style="position: absolute; right: 0; top: 0; transform: translateY(-50%);">260</span>
+<span style="position: absolute; right: 0; top: 25%; transform: translateY(-50%);">210</span>
+<span style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);">160</span>
+<span style="position: absolute; right: 0; top: 75%; transform: translateY(-50%);">110</span>
+<span style="position: absolute; right: 0; top: 100%; transform: translateY(-50%);">60</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+<div style="position: relative; height: 240px;">
+<svg width="100%" height="240" viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="{{gl.aria}}" style="display: block;">
+<rect x="0" y="96" width="1000" height="132" fill="#C7820E" fill-opacity="0.09"></rect>
+<path d="M0,0.5H1000M0,60H1000M0,120H1000M0,180H1000M0,239.5H1000" fill="none" stroke="#EAECF0" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+<path d="M0,96H1000" fill="none" stroke="#98A2B3" stroke-width="1.5" stroke-dasharray="2 4" vector-effect="non-scaling-stroke"></path>
+<path d="{{gl.post}}" fill="none" stroke="#E0A84A" stroke-width="2" stroke-dasharray="6 4" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+<path d="{{gl.fast}}" fill="none" stroke="#C7820E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg>
+<sc-if value="{{gl.hov.on}}" hint-placeholder-val="{{false}}">
+<span style="{{gl.hov.line}}"></span>
+<span style="{{gl.hov.dot1}}"></span>
+<span style="{{gl.hov.dot2}}"></span>
+<span style="{{gl.hov.tip}}"><span style="font-size: 11px; color: #AEB8C8;">{{gl.hov.date}}</span><span style="font-size: 14px; font-weight: 600;">{{gl.hov.text}}</span></span>
+</sc-if>
+<div onMouseMove="{{gl.move}}" onMouseLeave="{{leave}}" style="position: absolute; inset: 0;"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #5D6679;"><sc-for list="{{xLabels}}" as="x" hint-placeholder-count="5"><span>{{x}}</span></sc-for></div>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; color: #475467; text-wrap: pretty;">{{gl.note}}</p>
+</article>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px;">
+<article style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #344054;"><span style="width: 36px; height: 36px; border-radius: 10px; background: #E6F5FA; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B9CC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path><path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path><path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path></svg></span>Lowest glucose</span>
+<span style="font-size: 32px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">{{pt.gluMin}} <span style="font-size: 13px; font-weight: 400; color: #5D6679;">mg/dL lowest</span></span>
+<span style="font-size: 13px; color: #475467;">Level 1 low blood sugar is below 70 mg/dL.</span>
+</article>
+<article style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #344054;"><span style="width: 36px; height: 36px; border-radius: 10px; background: #FDEDED; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span>Sleep</span>
+<span style="font-size: 32px; font-weight: 600; letter-spacing: -0.03em;">{{pt.sleepText}}</span>
+<span style="font-size: 13px; color: #475467;">Light, deep and REM sleep recorded overnight by your wearable.</span>
+</article>
+<article style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #344054;"><span style="width: 36px; height: 36px; border-radius: 10px; background: #F2F4F7; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"></path><path d="M5 8h14"></path><path d="m5 8-3 7a4 4 0 0 0 6 0Z"></path><path d="m19 8-3 7a4 4 0 0 0 6 0Z"></path></svg></span>Body mass index</span>
+<span style="font-size: 32px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">{{pt.bmi}} <span style="font-size: 13px; font-weight: 400; color: #5D6679;">kg/m²</span></span>
+<span style="font-size: 13px; color: #475467;">Type 2 diabetes for {{pt.t2d_duration_years}} years.</span>
+</article>
+</section>
+
+<section aria-labelledby="readings-h" style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 24px; padding: 24px 0 8px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 0 24px;">
+<h2 id="readings-h" style="margin: 0; font-size: 18px; font-weight: 600;">Recent readings</h2>
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid #D0D5DD; background: #FFFFFF; color: #1D2939; font-size: 14px; font-weight: 500;">Download for my doctor (PDF)</button>
+</div>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+<thead><tr><th scope="col">When</th><th scope="col">Measurement</th><th scope="col">Value</th><th scope="col">Source</th><th scope="col">Status</th></tr></thead>
+<tbody>
+<tr data-for="{{readings}}" data-as="r"><td>{{r.when}}</td><td><span style="display: flex; align-items: center; gap: 8px;"><span style="{{r.dot}}"></span>{{r.what}}</span></td><td style="font-weight: 600; font-variant-numeric: tabular-nums;">{{r.value}}</td><td style="color: #475467;">{{r.source}}</td><td><span style="{{r.badge}}">{{r.status}}</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 8px; border-top: 1px solid #E4E7EC; font-size: 13px; color: #5D6679;">
+<span>Readings from wearables help your care team monitor you. They don’t replace a clinical examination.</span>
+<span>Emergency: 112 · Hospital helpline: [Helpline number]</span>
+</footer>
+</main>
+</div>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap"></helmet></x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this, s = this.state || {}, P = window.PT, T = P.rows.length;
+    var N = s.range || T;
+    var label = N === T ? '24 hours' : (N * 5 / 60) + ' hours';
+    function ser(a) { return function (d) { return a[T - 1 - d]; }; }
+    var hrAt = ser(P.hr), hvAt = ser(P.hrv), glAt = ser(P.glu);
+    function avg(f, a, b) { var t = 0; for (var d = a; d <= b; d++) t += f(d); return t / (b - a + 1); }
+    function change(f) {
+      if (2 * N > T) return '—';
+      var v = (avg(f, 0, N - 1) - avg(f, N, 2 * N - 1)) / avg(f, N, 2 * N - 1) * 100;
+      return (v <= 0 ? '↓ ' : '↑ ') + Math.abs(v).toFixed(1) + '%';
+    }
+    function dateOf(d) { return P.t12(T - 1 - d); }
+    function X(i) { return N === 1 ? 0 : i / (N - 1) * 1000; }
+    function path(f, lo, hi) {
+      var out = '';
+      for (var i = 0; i < N; i++) out += (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + ((hi - f(N - 1 - i)) / (hi - lo) * 240).toFixed(1);
+      return out;
+    }
+    function yPct(v, lo, hi) { return ((hi - v) / (hi - lo) * 100).toFixed(2); }
+    function vals(f) { var a = []; for (var d = 0; d < N; d++) a.push(f(d)); return a; }
+    var xLabels = [];
+    for (var k = 0; k < 5; k++) { var idx = Math.round(k * (N - 1) / 4); xLabels.push(dateOf(N - 1 - idx)); }
+
+    function hover(key, series, textFn) {
+      var i = s.hov && s.hov.key === key ? s.hov.i : null;
+      if (i === null || i === undefined || i >= N) return { on: false };
+      var d = N - 1 - i, xp = X(i) / 10, tx = Math.max(8, Math.min(92, xp));
+      var out = {
+        on: true, date: dateOf(d) + (d === 0 ? ' · Latest' : ''), text: textFn(d),
+        line: 'position: absolute; top: 0; bottom: 0; left: ' + xp.toFixed(2) + '%; width: 1px; background: #98A2B3; pointer-events: none;',
+        tip: 'position: absolute; top: 8px; left: ' + tx.toFixed(2) + '%; transform: translateX(-50%); background: #0E1726; color: #FFFFFF; border-radius: 10px; padding: 6px 10px; display: flex; flex-direction: column; line-height: 1.3; pointer-events: none; white-space: nowrap; box-shadow: 0 6px 16px rgba(16,24,40,0.18);'
+      };
+      series.forEach(function (sr, n) {
+        out['dot' + (n + 1)] = 'position: absolute; left: ' + xp.toFixed(2) + '%; top: ' + yPct(sr.f(d), sr.lo, sr.hi) + '%; width: 10px; height: 10px; border-radius: 999px; background: ' + sr.color + '; border: 2px solid #FFFFFF; transform: translate(-50%, -50%); pointer-events: none;';
+      });
+      return out;
+    }
+    function move(key) {
+      return function (e) {
+        var r = e.currentTarget.getBoundingClientRect();
+        var i = Math.max(0, Math.min(N - 1, Math.round((e.clientX - r.left) / r.width * (N - 1))));
+        var h = (self.state || {}).hov;
+        if (!h || h.key !== key || h.i !== i) self.setState({ hov: { key: key, i: i } });
+      };
+    }
+    var hrLine = path(hrAt, 40, 120), hv = vals(hrAt);
+    var hr = {
+      avg: Math.round(avg(hrAt, 0, N - 1)),
+      range: Math.round(Math.min.apply(null, hv)) + '–' + Math.round(Math.max.apply(null, hv)),
+      change: change(hrAt), line: hrLine, area: hrLine + 'L1000,240L0,240Z',
+      aria: 'Heart rate over the last ' + label + ', averaging ' + Math.round(avg(hrAt, 0, N - 1)) + ' bpm.',
+      hov: hover('hr', [{ f: hrAt, lo: 40, hi: 120, color: '#E5484D' }], function (d) { return Math.round(hrAt(d)) + ' bpm'; }),
+      move: move('hr')
+    };
+    var bv = vals(hvAt);
+    var bp = {
+      avg: Math.round(avg(hvAt, 0, N - 1)), inTarget: Math.round(Math.min.apply(null, bv)) + ' ms', change: change(hvAt),
+      sys: path(hvAt, 20, 70), dia: '',
+      aria: 'Heart rate variability over the last ' + label + ', averaging ' + Math.round(avg(hvAt, 0, N - 1)) + ' ms.',
+      hov: hover('bp', [{ f: hvAt, lo: 20, hi: 70, color: '#8E4EC6' }], function (d) { return hvAt(d).toFixed(1) + ' ms'; }),
+      move: move('bp')
+    };
+    var gv = vals(glAt), high = gv.filter(function (v) { return v > 180; }).length * 5;
+    var gl = {
+      avg: Math.round(avg(glAt, 0, N - 1)), pm: Math.round(Math.max.apply(null, gv)), change: change(glAt),
+      fast: path(glAt, 60, 260), post: '',
+      note: high ? 'Glucose was above 180 mg/dL for ' + high + ' minutes in the last ' + label + '. Peak ' + Math.round(Math.max.apply(null, gv)) + ' mg/dL.' : 'Glucose stayed at or below 180 mg/dL for the last ' + label + '.',
+      aria: 'Blood glucose over the last ' + label + ', averaging ' + Math.round(avg(glAt, 0, N - 1)) + ' mg/dL.',
+      hov: hover('gl', [{ f: glAt, lo: 60, hi: 260, color: '#C7820E' }], function (d) { return Math.round(glAt(d)) + ' mg/dL'; }),
+      move: move('gl')
+    };
+    var ranges = [72, 144, T].map(function (n) {
+      var on = n === N;
+      return {
+        label: n === T ? '24 hours' : (n * 5 / 60) + ' hours', pressed: on ? 'true' : 'false',
+        style: 'min-height: 44px; padding: 0 16px; border-radius: 10px; border: none; font-size: 14px; font-weight: 500; ' + (on ? 'background: #0E1726; color: #FFFFFF;' : 'background: transparent; color: #344054;'),
+        pick: function () { self.setState({ range: n, hov: null }); }
+      };
+    });
+    var ok = 'font-size: 12px; font-weight: 600; color: #1F6E4A; background: #ECF8F1; padding: 3px 8px; border-radius: 6px;';
+    var warn = 'font-size: 12px; font-weight: 600; color: #92560A; background: #FDF3E1; padding: 3px 8px; border-radius: 6px;';
+    var dotS = function (c) { return 'width: 8px; height: 8px; border-radius: 999px; background: ' + c + ';'; };
+    var iMax = P.glu.indexOf(Math.max.apply(null, P.glu)), iMin = P.glu.indexOf(Math.min.apply(null, P.glu)), iHr = P.hr.indexOf(Math.max.apply(null, P.hr)), iHv = P.hrv.indexOf(Math.min.apply(null, P.hrv));
+    var readings = [
+      { when: P.t12(T - 1), what: 'Glucose, latest', dot: dotS('#C7820E'), value: Math.round(P.glu[T - 1]) + ' mg/dL', source: 'CGM', ok: P.glu[T - 1] <= 180 },
+      { when: P.t12(iMax), what: 'Glucose, peak', dot: dotS('#C7820E'), value: Math.round(P.glu[iMax]) + ' mg/dL', source: 'CGM', ok: P.glu[iMax] <= 180 },
+      { when: P.t12(iMin), what: 'Glucose, lowest', dot: dotS('#C7820E'), value: Math.round(P.glu[iMin]) + ' mg/dL', source: 'CGM', ok: P.glu[iMin] >= 70 },
+      { when: P.t12(iHr), what: 'Heart rate, peak', dot: dotS('#E5484D'), value: Math.round(P.hr[iHr]) + ' bpm', source: 'Wearable', ok: P.hr[iHr] <= 100 },
+      { when: P.t12(iHv), what: 'HRV, lowest', dot: dotS('#8E4EC6'), value: P.hrv[iHv].toFixed(1) + ' ms', source: 'Wearable', ok: true }
+    ].map(function (r) { return Object.assign(r, { status: r.ok ? 'In range' : 'Outside range', badge: r.ok ? ok : warn }); });
+    return { readings: readings, label: label, xLabels: xLabels, ranges: ranges, hr: hr, bp: bp, gl: gl, leave: function () { self.setState({ hov: null }); } };
+  }
+}
+</script>
+</body>
+</html>

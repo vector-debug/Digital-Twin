@@ -1,0 +1,92 @@
+[
+  {
+    "patient_id": "IN-PAT-4089",
+    "name": "Ramesh Kumar",
+    "age": 54,
+    "gender": "Male",
+    "city": "Bengaluru, Karnataka",
+    "bmi": 26.8,
+    "t2d_duration_years": 8,
+    "hba1c": 8.6,
+    "fasting_glucose_baseline": 158,
+    "egfr": 72.0,
+    "uacr": 45.0,
+    "medications": [
+      {
+        "name": "Glimepiride",
+        "dose": "2 mg",
+        "timing": "Dinner (20:30)",
+        "hypo_risk": "High"
+      },
+      {
+        "name": "Metformin",
+        "dose": "1000 mg",
+        "timing": "Dinner (20:30)",
+        "hypo_risk": "Low"
+      },
+      {
+        "name": "Telmisartan",
+        "dose": "40 mg",
+        "timing": "Morning (08:00)",
+        "hypo_risk": "None"
+      }
+    ],
+    "past_severe_hypos": 3,
+    "risk_phenotype": "High Risk - Nocturnal Hypoglycemia Cascade",
+    "description": "Long-standing T2D on Sulfonylurea therapy with high nocturnal crash vulnerability due to erratic dinner timings and mild renal clearance impairment."
+  },
+  {
+    "patient_id": "IN-PAT-2194",
+    "name": "Sunita Mehta",
+    "age": 48,
+    "gender": "Female",
+    "city": "Mumbai, Maharashtra",
+    "bmi": 24.2,
+    "t2d_duration_years": 4,
+    "hba1c": 7.4,
+    "fasting_glucose_baseline": 134,
+    "egfr": 88.0,
+    "uacr": 18.0,
+    "medications": [
+      {
+        "name": "Teneligliptin",
+        "dose": "20 mg",
+        "timing": "Morning (08:00)",
+        "hypo_risk": "Low"
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "timing": "Dinner (21:00)",
+        "hypo_risk": "Low"
+      }
+    ],
+    "past_severe_hypos": 0,
+    "risk_phenotype": "Moderate Risk - Postprandial Variability",
+    "description": "DPP-4 inhibitor + Metformin regimen. Exhibits postprandial surges after Indian carb-heavy dinners, with occasional early morning borderline dips."
+  },
+  {
+    "patient_id": "IN-PAT-1052",
+    "name": "Amit Sharma",
+    "age": 39,
+    "gender": "Male",
+    "city": "Hyderabad, Telangana",
+    "bmi": 23.1,
+    "t2d_duration_years": 2,
+    "hba1c": 6.4,
+    "fasting_glucose_baseline": 108,
+    "egfr": 102.0,
+    "uacr": 8.0,
+    "medications": [
+      {
+        "name": "Metformin",
+        "dose": "500 mg",
+        "timing": "Dinner (20:00)",
+        "hypo_risk": "Low"
+      }
+    ],
+    "past_severe_hypos": 0,
+    "risk_phenotype": "Low Risk - Stable Glycemic Control",
+    "description": "Early-stage T2D, active lifestyle, disciplined meal timings, optimal overnight glucose stability."
+  }
+]
