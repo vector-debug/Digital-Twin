@@ -1,3 +1,8 @@
+
+
+
+
+
 # GlycoTwin India — Patient Portal
 
 A patient-facing health portal prototype for people with Type 2 diabetes, built on synthetic wearable and glucose data. It shows a patient's vitals, activity, medications, risks and care plan, and includes a guided meditation page.
@@ -82,3 +87,6 @@ This project is distributed under the [MIT License](https://github.com/vector-de
 | Risks & care plan | Escalation ladder, current risks and lab results |
 | Meditate | Timer (5, 10, 15 or 20 min), bell at start and end, breathing guide over a calming scene, history and streak |
 | Profile | Patient details, care team, connected devices |
+
+## Website (Live)
+https://digital-twin-rho-two.vercel.app/portal/Main.dc.html
